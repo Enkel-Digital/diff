@@ -29,6 +29,12 @@ const router = createRouter({
       name: "home",
       component: Home,
     },
+    {
+      path: "/diff/:diffID",
+      props: true,
+      name: "view-diff",
+      component: () => import("../views/ViewDiff.vue"),
+    },
 
     /* Public only routes */
     // {
