@@ -35,6 +35,11 @@ const router = createRouter({
       component: () => import("../views/Create.vue"),
     },
     {
+      path: "/Diff2HTML",
+      name: "Diff2HTML",
+      component: () => import("../components/Diff2HTML.vue"),
+    },
+    {
       path: "/diff/:diffID",
       props: true,
       name: "view-diff",
