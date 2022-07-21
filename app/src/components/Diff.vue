@@ -1,13 +1,28 @@
 <template>
   <div class="mx-3">
-    <div v-html="htmlOutput"></div>
+    <div v-for="(line, i) in prettyHtml" :key="i">
+      <span v-if="line.charAt(0) === '+'" class="has-background-success">
+        {{ line }}
+      </span>
+      <span v-else-if="line.charAt(0) === '-'" class="has-background-danger">
+        {{ line }}
+      </span>
+      <span v-else>
+        {{ line }}
+      </span>
+    </div>
+
+    <hr />
+    <hr />
+    <hr />
+
+    <div v-for="(line, i) in prettyHtml" :key="i">
+      {{ line }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import * as Diff2Html from "diff2html";
-import "diff2html/bundles/css/diff2html.min.css";
-
 import * as Diff from "diff";
 
 export default {
@@ -35,21 +50,10 @@ export default {
       );
     },
 
-    htmlOutput() {
-      return Diff2Html.html(this.diff, {
-        // Dont show file names as there will only be 1 file being compared
-        // The UI will be created manually by the app instead of using this library
-        drawFileList: false,
-
-        // @todo Add select for this
-        matching: "none",
-        // matching: "lines",
-        // matching: "words",
-
-        // @todo Add toggle for this
-        outputFormat: "side-by-side",
-        // outputFormat: "line-by-line",
-      });
+    prettyHtml() {
+      //   console.log(this.diff.split("\n"));
+      //   return this.diff;
+      return this.diff.split("\n");
     },
   },
 };
