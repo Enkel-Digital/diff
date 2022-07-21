@@ -30,6 +30,11 @@ const router = createRouter({
       component: Home,
     },
     {
+      path: "/create",
+      name: "create",
+      component: () => import("../views/Create.vue"),
+    },
+    {
       path: "/diff/:diffID",
       props: true,
       name: "view-diff",
