@@ -45,6 +45,15 @@
           <span @click="showMobileMenu = false">{{ menuItem.name }}</span>
         </router-link>
 
+        <router-link :to="{ name: 'create' }" class="navbar-item">
+          <button
+            class="button is-light is-success"
+            @click="showMobileMenu = false"
+          >
+            Create Diff
+          </button>
+        </router-link>
+
         <a
           class="navbar-item"
           href="https://github.com/Enkel-Digital/vue3-bulma-template"
